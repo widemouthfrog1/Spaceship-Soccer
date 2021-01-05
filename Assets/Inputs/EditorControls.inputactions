@@ -1,0 +1,174 @@
+{
+    "name": "EditorControls",
+    "maps": [
+        {
+            "name": "Camera",
+            "id": "dd42cce5-e479-469a-83f2-632f7149a4b6",
+            "actions": [
+                {
+                    "name": "Rotate",
+                    "type": "PassThrough",
+                    "id": "63d40b5b-e955-49e7-a541-df3ce754f60a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Zoom",
+                    "type": "PassThrough",
+                    "id": "192a048a-c0fe-429a-a343-66ba2d681af1",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ZoomStart",
+                    "type": "Button",
+                    "id": "552d8d11-e35d-4b6a-b8a5-7d8fca3d4ef3",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "RotateStart",
+                    "type": "Button",
+                    "id": "79dd1adc-4fa6-45a0-b972-c4f2691eaa05",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "EnableCameraControls",
+                    "type": "Button",
+                    "id": "bb95b722-598c-4a96-9e08-20902b412b32",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "180ec2b8-28ac-4cbf-88d8-f66f956f0536",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rotate",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e3dfab9f-7229-4800-bbcf-10da2be9a0e7",
+                    "path": "<Mouse>/scroll/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Zoom",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9eac8235-0b20-44e8-bc02-aa21d32c2441",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ZoomStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e74980bc-7d78-4529-a018-bb9a6c6d4dd0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotateStart",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91bf5bf3-a125-4663-983a-b9dcdbd6d9ce",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EnableCameraControls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Edit",
+            "id": "43481082-25fe-4eb9-bd74-bc726770584f",
+            "actions": [
+                {
+                    "name": "EditPosition",
+                    "type": "PassThrough",
+                    "id": "e87e2a8a-4424-4348-b347-b500961cfa08",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Edit",
+                    "type": "Button",
+                    "id": "7dc6846e-0b39-455d-a03a-4650a1e91dc1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DisableEdits",
+                    "type": "Button",
+                    "id": "154a06f2-0546-428c-a860-12a8e1908f54",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "500c444f-0353-4e23-b90b-568bff66681e",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EditPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d7e5faa3-b11f-439e-9d85-b4a89b18260a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Edit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97024b2b-2605-415d-bb93-00340974a47d",
+                    "path": "<Keyboard>/alt",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DisableEdits",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
