@@ -3655,7 +3655,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Thruster
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2614216880699046639, guid: 7443f709a4ea7ba488838e5f8217aa3d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7443f709a4ea7ba488838e5f8217aa3d, type: 3}
 --- !u!1001 &4360299453335205772
 PrefabInstance:

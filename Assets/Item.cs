@@ -15,7 +15,8 @@ public class Item : MonoBehaviour
         globalVariables = GameObject.Find("/Global Variables");
         if (!TryGetComponent(out button))
         {
-            Debug.LogError("Item must have button");
+            gameObject.AddComponent<Button>();
+            button = GetComponent<Button>();
         }
         
         button.onClick.AddListener(() => globalVariables.GetComponent<Buttons>().SetSelected(name));
