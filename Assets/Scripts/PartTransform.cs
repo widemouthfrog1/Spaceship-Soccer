@@ -19,6 +19,7 @@ public class PartTransform : MonoBehaviour
             rotationError = "";
         } catch (System.FormatException e)
         {
+            
             rotationError = "Please input a number";
         }
         
