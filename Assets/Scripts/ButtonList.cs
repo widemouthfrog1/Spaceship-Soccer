@@ -29,7 +29,6 @@ public class ButtonList : MonoBehaviour
             buttons[i].item = items[i];
             buttons[i].GetComponent<RectTransform>().sizeDelta = new Vector2(buttons[i].GetComponent<RectTransform>().sizeDelta.x, buttonHeight);
             Vector2 buttonSize = buttons[i].GetComponent<RectTransform>().sizeDelta;
-            Debug.Log(bounds.sizeDelta.y + " " + (bounds.sizeDelta.y - edge - i * buttonHeight - i * buttonSpace - items.Count * 10));
             buttons[i].transform.localPosition = new Vector2(-scrollBarWidth/2, bounds.sizeDelta.y/2 - buttonHeight/2 - edge - i*buttonHeight - i*buttonSpace);
         }
         
