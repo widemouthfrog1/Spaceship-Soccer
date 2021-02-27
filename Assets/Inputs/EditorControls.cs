@@ -122,7 +122,7 @@ public class @EditorControls : IInputActionCollection, IDisposable
             ""id"": ""43481082-25fe-4eb9-bd74-bc726770584f"",
             ""actions"": [
                 {
-                    ""name"": ""EditPosition"",
+                    ""name"": ""MousePosition"",
                     ""type"": ""PassThrough"",
                     ""id"": ""e87e2a8a-4424-4348-b347-b500961cfa08"",
                     ""expectedControlType"": ""Vector2"",
@@ -130,7 +130,7 @@ public class @EditorControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Edit"",
+                    ""name"": ""LeftMouse"",
                     ""type"": ""Button"",
                     ""id"": ""7dc6846e-0b39-455d-a03a-4650a1e91dc1"",
                     ""expectedControlType"": ""Button"",
@@ -144,6 +144,14 @@ public class @EditorControls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""MouseDelta"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d725e03f-d1b0-48c1-a2ae-028906219d20"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -154,7 +162,7 @@ public class @EditorControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""EditPosition"",
+                    ""action"": ""MousePosition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -165,7 +173,7 @@ public class @EditorControls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Edit"",
+                    ""action"": ""LeftMouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -177,6 +185,17 @@ public class @EditorControls : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""DisableEdits"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4341c52-1656-4057-aba8-43d8468a33e8"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MouseDelta"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -194,9 +213,10 @@ public class @EditorControls : IInputActionCollection, IDisposable
         m_Camera_EnableCameraControls = m_Camera.FindAction("EnableCameraControls", throwIfNotFound: true);
         // Edit
         m_Edit = asset.FindActionMap("Edit", throwIfNotFound: true);
-        m_Edit_EditPosition = m_Edit.FindAction("EditPosition", throwIfNotFound: true);
-        m_Edit_Edit = m_Edit.FindAction("Edit", throwIfNotFound: true);
+        m_Edit_MousePosition = m_Edit.FindAction("MousePosition", throwIfNotFound: true);
+        m_Edit_LeftMouse = m_Edit.FindAction("LeftMouse", throwIfNotFound: true);
         m_Edit_DisableEdits = m_Edit.FindAction("DisableEdits", throwIfNotFound: true);
+        m_Edit_MouseDelta = m_Edit.FindAction("MouseDelta", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -311,16 +331,18 @@ public class @EditorControls : IInputActionCollection, IDisposable
     // Edit
     private readonly InputActionMap m_Edit;
     private IEditActions m_EditActionsCallbackInterface;
-    private readonly InputAction m_Edit_EditPosition;
-    private readonly InputAction m_Edit_Edit;
+    private readonly InputAction m_Edit_MousePosition;
+    private readonly InputAction m_Edit_LeftMouse;
     private readonly InputAction m_Edit_DisableEdits;
+    private readonly InputAction m_Edit_MouseDelta;
     public struct EditActions
     {
         private @EditorControls m_Wrapper;
         public EditActions(@EditorControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @EditPosition => m_Wrapper.m_Edit_EditPosition;
-        public InputAction @Edit => m_Wrapper.m_Edit_Edit;
+        public InputAction @MousePosition => m_Wrapper.m_Edit_MousePosition;
+        public InputAction @LeftMouse => m_Wrapper.m_Edit_LeftMouse;
         public InputAction @DisableEdits => m_Wrapper.m_Edit_DisableEdits;
+        public InputAction @MouseDelta => m_Wrapper.m_Edit_MouseDelta;
         public InputActionMap Get() { return m_Wrapper.m_Edit; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -330,28 +352,34 @@ public class @EditorControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_EditActionsCallbackInterface != null)
             {
-                @EditPosition.started -= m_Wrapper.m_EditActionsCallbackInterface.OnEditPosition;
-                @EditPosition.performed -= m_Wrapper.m_EditActionsCallbackInterface.OnEditPosition;
-                @EditPosition.canceled -= m_Wrapper.m_EditActionsCallbackInterface.OnEditPosition;
-                @Edit.started -= m_Wrapper.m_EditActionsCallbackInterface.OnEdit;
-                @Edit.performed -= m_Wrapper.m_EditActionsCallbackInterface.OnEdit;
-                @Edit.canceled -= m_Wrapper.m_EditActionsCallbackInterface.OnEdit;
+                @MousePosition.started -= m_Wrapper.m_EditActionsCallbackInterface.OnMousePosition;
+                @MousePosition.performed -= m_Wrapper.m_EditActionsCallbackInterface.OnMousePosition;
+                @MousePosition.canceled -= m_Wrapper.m_EditActionsCallbackInterface.OnMousePosition;
+                @LeftMouse.started -= m_Wrapper.m_EditActionsCallbackInterface.OnLeftMouse;
+                @LeftMouse.performed -= m_Wrapper.m_EditActionsCallbackInterface.OnLeftMouse;
+                @LeftMouse.canceled -= m_Wrapper.m_EditActionsCallbackInterface.OnLeftMouse;
                 @DisableEdits.started -= m_Wrapper.m_EditActionsCallbackInterface.OnDisableEdits;
                 @DisableEdits.performed -= m_Wrapper.m_EditActionsCallbackInterface.OnDisableEdits;
                 @DisableEdits.canceled -= m_Wrapper.m_EditActionsCallbackInterface.OnDisableEdits;
+                @MouseDelta.started -= m_Wrapper.m_EditActionsCallbackInterface.OnMouseDelta;
+                @MouseDelta.performed -= m_Wrapper.m_EditActionsCallbackInterface.OnMouseDelta;
+                @MouseDelta.canceled -= m_Wrapper.m_EditActionsCallbackInterface.OnMouseDelta;
             }
             m_Wrapper.m_EditActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @EditPosition.started += instance.OnEditPosition;
-                @EditPosition.performed += instance.OnEditPosition;
-                @EditPosition.canceled += instance.OnEditPosition;
-                @Edit.started += instance.OnEdit;
-                @Edit.performed += instance.OnEdit;
-                @Edit.canceled += instance.OnEdit;
+                @MousePosition.started += instance.OnMousePosition;
+                @MousePosition.performed += instance.OnMousePosition;
+                @MousePosition.canceled += instance.OnMousePosition;
+                @LeftMouse.started += instance.OnLeftMouse;
+                @LeftMouse.performed += instance.OnLeftMouse;
+                @LeftMouse.canceled += instance.OnLeftMouse;
                 @DisableEdits.started += instance.OnDisableEdits;
                 @DisableEdits.performed += instance.OnDisableEdits;
                 @DisableEdits.canceled += instance.OnDisableEdits;
+                @MouseDelta.started += instance.OnMouseDelta;
+                @MouseDelta.performed += instance.OnMouseDelta;
+                @MouseDelta.canceled += instance.OnMouseDelta;
             }
         }
     }
@@ -366,8 +394,9 @@ public class @EditorControls : IInputActionCollection, IDisposable
     }
     public interface IEditActions
     {
-        void OnEditPosition(InputAction.CallbackContext context);
-        void OnEdit(InputAction.CallbackContext context);
+        void OnMousePosition(InputAction.CallbackContext context);
+        void OnLeftMouse(InputAction.CallbackContext context);
         void OnDisableEdits(InputAction.CallbackContext context);
+        void OnMouseDelta(InputAction.CallbackContext context);
     }
 }

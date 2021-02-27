@@ -109,7 +109,7 @@
             "id": "43481082-25fe-4eb9-bd74-bc726770584f",
             "actions": [
                 {
-                    "name": "EditPosition",
+                    "name": "MousePosition",
                     "type": "PassThrough",
                     "id": "e87e2a8a-4424-4348-b347-b500961cfa08",
                     "expectedControlType": "Vector2",
@@ -117,7 +117,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Edit",
+                    "name": "LeftMouse",
                     "type": "Button",
                     "id": "7dc6846e-0b39-455d-a03a-4650a1e91dc1",
                     "expectedControlType": "Button",
@@ -131,6 +131,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "MouseDelta",
+                    "type": "PassThrough",
+                    "id": "d725e03f-d1b0-48c1-a2ae-028906219d20",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -141,7 +149,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "EditPosition",
+                    "action": "MousePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -152,7 +160,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Edit",
+                    "action": "LeftMouse",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -164,6 +172,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DisableEdits",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4341c52-1656-4057-aba8-43d8468a33e8",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseDelta",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

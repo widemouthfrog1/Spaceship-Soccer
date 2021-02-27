@@ -20,11 +20,11 @@ public class GhostObject : MonoBehaviour
         globalVariables = GameObject.Find("/Global Variables");
         editorControls = globalVariables.GetComponent<Controls>().editorControls;
         ship = GameObject.Find("/Ship");
-        editorControls.Edit.EditPosition.performed += v =>
+        editorControls.Edit.MousePosition.performed += v =>
         {
             mouseInput = v.ReadValue<Vector2>();
         };
-        editorControls.Edit.Edit.started += v =>
+        editorControls.Edit.LeftMouse.started += v =>
         {
             click = true;
         };
@@ -104,14 +104,12 @@ public class GhostObject : MonoBehaviour
                         Vector3 size = new Vector3(box.size.x * scale.x, box.size.y * scale.y, box.size.z * scale.z);
                         min = box.center - size / 2;
                         max = box.center + size / 2;
-                        //rotate hit point into correct space
+                        //rotate hit point into correct space (convert hit point from world to object space)
                         boxSpaceHit = box.center + Quaternion.Inverse(hit.transform.rotation) * (hit.point-box.center);
                         angle = Vector3.Angle(boxSpaceHit, hit.point);
                         q = hit.transform.rotation;
                         originalHit = hit;
                         //check x,y,z values against min max to find face that was hit
-                        
-
                     }
                     Vector3 o = hit.transform.up;
                     Vector3 n = hit.normal;
