@@ -83,19 +83,19 @@ public class TranslateGizmos : MonoBehaviour
             {
                 Vector3 dTemp = Camera.main.WorldToScreenPoint(xGizmo.transform.position) - Camera.main.WorldToScreenPoint(transform.position);
                 Vector2 direction = new Vector2(dTemp.x, dTemp.y);
-                transform.position = new Vector3(transform.position.x + (Vector2.Dot(direction, mouseDelta) / direction.magnitude)/80, transform.position.y, transform.position.z);
+                transform.parent.position = new Vector3(transform.parent.position.x + (Vector2.Dot(direction, mouseDelta) / direction.magnitude)/80, transform.parent.position.y, transform.parent.position.z);
             }
             if (activeGizmo.Equals("Y"))
             {
                 Vector3 dTemp = Camera.main.WorldToScreenPoint(yGizmo.transform.position) - Camera.main.WorldToScreenPoint(transform.position);
                 Vector2 direction = new Vector2(dTemp.x, dTemp.y);
-                transform.position = new Vector3(transform.position.x , transform.position.y + (Vector2.Dot(direction, mouseDelta) / direction.magnitude) / 80, transform.position.z);
+                transform.parent.position = new Vector3(transform.parent.position.x , transform.parent.position.y + (Vector2.Dot(direction, mouseDelta) / direction.magnitude) / 80, transform.parent.position.z);
             }
             if (activeGizmo.Equals("Z"))
             {
                 Vector3 dTemp = Camera.main.WorldToScreenPoint(zGizmo.transform.position) - Camera.main.WorldToScreenPoint(transform.position);
                 Vector2 direction = new Vector2(dTemp.x, dTemp.y);
-                transform.position = new Vector3(transform.position.x , transform.position.y, transform.position.z + (Vector2.Dot(direction, mouseDelta) / direction.magnitude) / 80);
+                transform.parent.position = new Vector3(transform.parent.position.x , transform.parent.position.y, transform.parent.position.z + (Vector2.Dot(direction, mouseDelta) / direction.magnitude) / 80);
             }
         }
         if (!leftButtonPressed)
