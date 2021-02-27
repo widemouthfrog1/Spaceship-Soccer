@@ -113,8 +113,14 @@ public class GhostObject : MonoBehaviour
                     }
                     Vector3 o = hit.transform.up;
                     Vector3 n = hit.normal;
+                    Debug.Log(o + "    " + n);
+
+                    if ((o - n).magnitude < 0.01f || (o + n).magnitude < 0.01f)
+                    {
+                        o = hit.transform.forward;
+                    }
                     Vector3 newForward = Vector3.ProjectOnPlane(o, n);
-                    Debug.Log(newForward+ " " + transform.forward);
+                    //Debug.Log(newForward+ " " + transform.forward);
                     transform.localRotation = Quaternion.FromToRotation(new Vector3(0, 1, 0), n);
                     float r = globalVariables.GetComponent<PartTransform>().rotation;
                     if (n != o && n != -o)
