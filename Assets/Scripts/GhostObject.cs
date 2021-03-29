@@ -12,7 +12,6 @@ public class GhostObject : MonoBehaviour
     public string last = "None";
     public Vector2 mouseInput;
     bool click = false;
-    bool canEdit = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +29,14 @@ public class GhostObject : MonoBehaviour
         };
         editorControls.Edit.DisableEdits.started += v =>
         {
-            canEdit = false;
+            Debug.Log("Disable Ghost");
+            globalVariables.GetComponent<GhostVariables>().SetGhostActive(false);
+            Debug.Log(globalVariables.GetComponent<GhostVariables>().ghostActive);
         };
         editorControls.Edit.DisableEdits.canceled += v =>
         {
-            canEdit = true;
+            Debug.Log("Enable Ghost");
+            globalVariables.GetComponent<GhostVariables>().SetGhostActive(true);
         };
     }
 
@@ -90,7 +92,7 @@ public class GhostObject : MonoBehaviour
             RaycastHit originalHit = new RaycastHit();
             Quaternion q = new Quaternion();
             float angle = -1;
-            if (canEdit && Physics.Raycast(ray, out hit, 50))
+            if (globalVariables.GetComponent<GhostVariables>().ghostActive && Physics.Raycast(ray, out hit, 50))
             {
                 
                 if (hit.transform.parent != null && hit.transform.parent.gameObject.name == "Ship")
@@ -113,7 +115,6 @@ public class GhostObject : MonoBehaviour
                     }
                     Vector3 o = hit.transform.up;
                     Vector3 n = hit.normal;
-                    Debug.Log(o + "    " + n);
 
                     if ((o - n).magnitude < 0.01f || (o + n).magnitude < 0.01f)
                     {
@@ -144,8 +145,8 @@ public class GhostObject : MonoBehaviour
                     float qAngle = 0;
                     Vector3 axis = Vector3.zero;
                     transform.localRotation.ToAngleAxis(out qAngle, out axis);
-                    Debug.Log(originalHit.normal);
-                    Debug.Log("Local: " + axis + " " + qAngle);
+                    //Debug.Log(originalHit.normal);
+                    //Debug.Log("Local: " + axis + " " + qAngle);
                     GameObject obj = Instantiate(_base, transform.position, transform.rotation, ship.transform);
 
                     

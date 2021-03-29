@@ -1504,6 +1504,7 @@ GameObject:
   - component: {fileID: 643496965}
   - component: {fileID: 643496966}
   - component: {fileID: 643496964}
+  - component: {fileID: 643496968}
   m_Layer: 0
   m_Name: Global Variables
   m_TagString: Untagged
@@ -1583,6 +1584,19 @@ RectTransform:
   m_AnchoredPosition: {x: 320.97556, y: 253.11449}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &643496968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643496962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7758840239a244249875b5d1c0a9b894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostActive: 0
 --- !u!1 &649486442
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,6 +3307,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gizmo: {fileID: 8522046464434336048, guid: baf33f7b5d4167643b9e4cf0f1c40aa0, type: 3}
+  mouseInput: {x: 0, y: 0}
+  mouseDelta: {x: 0, y: 0}
 --- !u!1 &1594762555
 GameObject:
   m_ObjectHideFlags: 0

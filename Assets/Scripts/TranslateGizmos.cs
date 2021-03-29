@@ -15,6 +15,7 @@ public class TranslateGizmos : MonoBehaviour
     EditorControls editorControls;
     private GameObject globalVariables;
     bool leftButtonPressed = false;
+    bool wasPressed = false;
     string activeGizmo = "";
 
     // Start is called before the first frame update
@@ -76,9 +77,14 @@ public class TranslateGizmos : MonoBehaviour
             {
                 activeGizmo = hit.transform.name;
             }
+            if((activeGizmo.Equals("X") || activeGizmo.Equals("Y") || activeGizmo.Equals("Z"))){
+                globalVariables.GetComponent<GhostVariables>().SetGhostActive(false);
+            }
+            
         }
         if(leftButtonPressed && canTranslate && (activeGizmo.Equals("X") || activeGizmo.Equals("Y") || activeGizmo.Equals("Z")))
         {
+            wasPressed = true;
             if (activeGizmo.Equals("X"))
             {
                 Vector3 dTemp = Camera.main.WorldToScreenPoint(xGizmo.transform.position) - Camera.main.WorldToScreenPoint(transform.position);
@@ -98,8 +104,10 @@ public class TranslateGizmos : MonoBehaviour
                 transform.parent.position = new Vector3(transform.parent.position.x , transform.parent.position.y, transform.parent.position.z + (Vector2.Dot(direction, mouseDelta) / direction.magnitude) / 80);
             }
         }
-        if (!leftButtonPressed)
+        //Debug.Log(wasPressed);
+        if (!leftButtonPressed && wasPressed)
         {
+            globalVariables.GetComponent<GhostVariables>().SetGhostActive(true);
             activeGizmo = "";
         }
         

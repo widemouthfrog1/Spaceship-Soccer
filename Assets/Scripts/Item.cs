@@ -21,6 +21,7 @@ public class Item : MonoBehaviour
         
         button.onClick.AddListener(() => globalVariables.GetComponent<Buttons>().SetSelected(item.name));
         button.onClick.AddListener(() => globalVariables.GetComponent<Selection>().Selecting(false));
+        button.onClick.AddListener(() => globalVariables.GetComponent<GhostVariables>().SetGhostActive(true));
         transform.Find("Text").GetComponent<Text>().text = item.name;
 
     }
